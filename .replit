@@ -1,0 +1,7 @@
+run = "npm run dev"
+entrypoint = "src/main.tsx"
+hidden = ["node_modules", ".git", "dist"]
+
+[[ports]]
+localPort = 5173
+externalPort = 80
