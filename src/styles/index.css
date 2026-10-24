@@ -20,3 +20,47 @@
 @media(max-width:720px){.sidebar{transform:translateX(105%);transition:transform .2s;box-shadow:-10px 0 35px #1d335315;width:270px}.sidebar.sidebar-open{transform:translateX(0)}.mobile-scrim{position:fixed;inset:0;background:#0c24466e;display:block;z-index:20;border:0}.mobile-close{display:inline-flex}.sidebar-top{display:flex;align-items:center;justify-content:space-between}.app-main{margin-right:0}.topbar{height:67px;padding:0 18px}.topbar-start{gap:10px}.topbar-icon,.topbar-divider{display:none}.menu-trigger{display:flex}.topbar-end{gap:11px}.topbar-end .btn{font-size:0;width:36px;min-height:36px;padding:0}.topbar-end .btn svg{width:20px;height:20px}.content{padding:26px 15px 42px}.page-title{align-items:flex-start;flex-direction:column;gap:14px}.page-title h1{font-size:24px}.page-title .btn{width:100%}.page-action{width:100%}.metrics-grid{gap:10px}.metric-card{min-height:153px}.metric-value{font-size:25px}.summary-strip{padding:13px 5px;gap:0}.summary-strip strong{font-size:19px}.summary-strip span{font-size:9px;text-align:center}.app-footer{padding:17px 15px}.panel-toolbar{padding:17px 15px}.table-actions{width:100%;flex-wrap:wrap}.search-input{width:100%;min-width:0}.panel-toolbar .filter-select{flex:1}.task-row,.appointment-row{flex-wrap:wrap}.task-meta{width:calc(100% - 60px);margin-right:40px}.appointment-date{width:43px;height:48px}.appointment-row .row-actions{margin-right:auto}.section-head{padding:18px}.compact-list{padding:0 17px 12px}.auth-shell{display:block}.auth-hero{display:none}.auth-form-side{min-height:100vh;padding:35px 25px}.auth-mobile-logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;margin-bottom:38px}.auth-title h2{font-size:24px}.form-grid{grid-template-columns:1fr}.modal{padding:20px}.modal-overlay{padding:12px}.kanban-column{flex-basis:222px}.reports-grid{grid-template-columns:1fr}}
 @media(max-width:380px){.metrics-grid{grid-template-columns:1fr 1fr}.metric-card{padding:13px}.metric-label{font-size:10px}.metric-subtitle{font-size:9px}.summary-strip span{font-size:8px}.btn{font-size:11px;padding:8px 12px}.detail-grid{grid-template-columns:1fr}.activity-form{flex-wrap:wrap}.activity-form .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.fu-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.fu-tab{display:inline-flex;align-items:center;gap:8px;border:1px solid #e4eaf3;background:#fff;border-radius:9px;padding:8px 14px;font-size:12px;font-weight:700;color:#6b7a90;transition:.15s;cursor:pointer}
+.fu-tab:hover{background:#f6f9fe}
+.fu-tab-active{background:#edf3ff;color:#2462d3;border-color:#c5d9f5}
+.fu-list{display:flex;flex-direction:column;gap:10px;padding:18px 22px 22px}
+.fu-card{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #eaeef5;border-radius:12px;padding:15px 17px;transition:.15s;background:#fff}
+.fu-card:hover{border-color:#d0deef;box-shadow:0 3px 12px #1d335607}
+.fu-card-overdue{border-color:#f0d0d6;background:#fef9f9}
+.fu-card-main{display:flex;align-items:center;gap:13px;flex:1;min-width:0;cursor:pointer}
+.fu-card-info{min-width:0}
+.fu-card-title{display:flex;align-items:center;gap:8px}
+.fu-card-title b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fu-action{display:flex;align-items:center;gap:5px;font-size:11px;color:#8294aa;margin-top:5px}
+.fu-date{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:#9aa7b8;margin-top:5px}
+.fu-date.overdue{color:#d6576a}
+.fu-card-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.fu-current-plan{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#f8fafd;border:1px solid #f1f4f8;border-radius:9px;padding:14px;margin-bottom:18px}
+.fu-current-plan>div{display:flex;flex-direction:column;gap:5px}
+.fu-current-plan span{font-size:10px;color:#91a0b4}
+.fu-current-plan b{font-size:12px;color:#324761}
+.overdue-text{color:#d6576a}
+.fu-record-section{margin-bottom:18px}
+.fu-record-section h3{display:flex;align-items:center;gap:7px;font-size:13px;color:#34445b;margin-bottom:12px}
+.fu-record-form{display:flex;gap:8px;flex-wrap:wrap}
+.fu-record-form .filter-select{width:auto;flex-shrink:0}
+.fu-record-form input{flex:1;min-width:180px;border:1px solid #dce6f2;border-radius:9px;padding:10px 12px;font-size:12px;color:#334b69}
+.fu-record-form input:focus{border-color:#7aa8f0;outline:0}
+.fu-wa-cta{margin-bottom:18px}
+.fu-timeline-section{border-top:1px solid #edf0f6;padding-top:18px}
+.fu-timeline{position:relative;padding-right:18px;margin-top:14px}
+.fu-timeline-item{display:flex;gap:12px;padding-bottom:18px;position:relative}
+.fu-timeline-item:last-child{padding-bottom:0}
+.fu-timeline-item:before{content:'';position:absolute;right:5px;top:22px;bottom:0;width:1px;background:#e5eaf2}
+.fu-timeline-item:last-child:before{display:none}
+.fu-timeline-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;margin-top:5px;z-index:1;position:relative}
+.fu-dot-activity{background:#5184db}
+.fu-dot-task{background:#f39b30}
+.fu-dot-appointment{background:#7c70e5}
+.fu-dot-deal{background:#21a76c}
+.fu-timeline-body{min-width:0;flex:1}
+.fu-timeline-body p{font-size:12px;color:#334d70}
+.fu-timeline-body small{display:block;margin-top:4px;font-size:10px;color:#a3adba}
+.fu-timeline-date{display:block;margin-top:3px;font-size:9px;color:#b8c0cc}
+@media(max-width:720px){.fu-card{flex-direction:column;align-items:stretch}.fu-card-actions{justify-content:flex-end}.fu-current-plan{grid-template-columns:1fr}.fu-record-form{flex-direction:column}.fu-record-form .filter-select{width:100%}}

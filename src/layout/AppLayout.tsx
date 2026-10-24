@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { CalendarDays, ChartNoAxesCombined, ChevronDown, CircleHelp, ClipboardList, LayoutDashboard, LogOut, Menu, PanelRightClose, Plus, Settings, Target, Users, X } from 'lucide-react';
+import { CalendarDays, ChartNoAxesCombined, ChevronDown, CircleHelp, ClipboardList, LayoutDashboard, LogOut, Menu, PanelRightClose, Plus, Settings, Target, Users, X, CalendarClock } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { getClient } from '../lib/supabase';
 
@@ -8,6 +8,7 @@ const nav = [
   { to:'/dashboard', label:'لوحة التحكم', icon:LayoutDashboard },
   { to:'/customers', label:'العملاء', icon:Users },
   { to:'/pipeline', label:'فرص البيع', icon:Target },
+  { to:'/follow-ups', label:'مركز المتابعات', icon:CalendarClock },
   { to:'/tasks', label:'المهام', icon:ClipboardList },
   { to:'/appointments', label:'المواعيد', icon:CalendarDays },
   { to:'/reports', label:'التقارير', icon:ChartNoAxesCombined },

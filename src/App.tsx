@@ -11,6 +11,7 @@ import { TasksPage } from './pages/TasksPage';
 import { AppointmentsPage } from './pages/AppointmentsPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { FollowUpsPage } from './pages/FollowUpsPage';
 
 function RoutedApp(){
   const {user,loading}=useAuth();
@@ -22,6 +23,7 @@ function RoutedApp(){
       <Route path="/dashboard" element={<DashboardPage/>}/>
       <Route path="/customers" element={<CustomersPage/>}/>
       <Route path="/pipeline" element={<PipelinePage/>}/>
+      <Route path="/follow-ups" element={<FollowUpsPage/>}/>
       <Route path="/tasks" element={<TasksPage/>}/>
       <Route path="/appointments" element={<AppointmentsPage/>}/>
       <Route path="/reports" element={<ReportsPage/>}/>

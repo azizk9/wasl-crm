@@ -1,9 +1,10 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  CalendarClock, CheckCircle2, ChevronLeft, Clock3, MessageCircle, Phone,
-  Plus, CalendarPlus, ListChecks, AlertTriangle, Users, ArrowUpLeft, X,
+  CalendarClock, CheckCircle2, Clock3, MessageCircle,
+  Plus, CalendarPlus, ListChecks, Users, ArrowUpLeft, X,
 } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
 import {
   Confirm, Empty, ErrorBox, Loader, Modal, PageTitle, SearchInput, StatusBadge, type Field,
 } from '../components/UI';
@@ -12,8 +13,6 @@ import { errorMessage } from '../lib/data';
 import { formatDate, isOverdue, inToday, isUpcoming, localInputTime, whatsappWithMessage } from '../lib/format';
 import { useRows } from '../lib/useRows';
 import type { Activity, ActivityType, Appointment, Customer, Deal, Task } from '../types/models';
-
-type FollowUpCustomer = Customer & { _source?: string };
 
 type ActivityDraft = { type: ActivityType; content: string };
 
@@ -34,7 +33,6 @@ export function FollowUpsPage() {
   const [savingActivity, setSavingActivity] = useState(false);
 
   const active = useMemo(() => customers.rows.filter(c => !c.is_archived), [customers.rows]);
-  const customerNames = useMemo(() => new Map(active.map(c => [c.id, c.name])), [active]);
 
   const withFollowUp = useMemo(
     () => active.filter(c => c.next_follow_up_at).sort((a, b) =>
@@ -312,7 +310,7 @@ export function FollowUpsPage() {
                 </a>
               )}
               <button className="btn btn-primary" disabled={savingActivity || !activityDraft.content.trim()}>
-                {savingActivity ? <Loader className="spin" size={16}/> : <Plus size={16}/>}
+                {savingActivity ? <LoaderCircle className="spin" size={16}/> : <Plus size={16}/>}
                 حفظ
               </button>
             </form>
