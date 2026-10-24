@@ -1,9 +1,9 @@
 import { useMemo, useRef, useState } from 'react';
-import { AlertCircle, ArrowLeft, CheckCircle2, FileUp, LoaderCircle, Upload, X } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, FileUp, LoaderCircle, Upload, X } from 'lucide-react';
 import { ErrorBox, Modal, StatusBadge } from '../components/UI';
 import { CUSTOMER_STATUSES, SOURCES } from '../lib/constants';
 import {
-  autoDetectMapping, downloadCSV, CSV_FIELDS, CSV_FIELD_LABELS, exportCustomersCSV,
+  autoDetectMapping, downloadCSV, CSV_FIELDS, CSV_FIELD_LABELS,
   mapRow, parseCSV, validateRow, type ParsedRow,
 } from '../lib/csv';
 import type { Customer } from '../types/models';

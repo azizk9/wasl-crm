@@ -138,10 +138,15 @@ export function mapRow(
 
 export function exportCustomersCSV(customers: Customer[]): string {
   const headers = ['الاسم', 'الهاتف', 'البريد الإلكتروني', 'المصدر', 'الحالة', 'تاريخ الإضافة'];
-  const escape = (val: string) => {
-    if (val.includes(',') || val.includes('"') || val.includes('\n'))
-      return `"${val.replace(/"/g, '""')}"`;
+  const sanitize = (val: string): string => {
+    if (/^[=\+\-@\t\r]/.test(val)) return `'${val}`;
     return val;
+  };
+  const escape = (val: string) => {
+    const safe = sanitize(val);
+    if (safe.includes(',') || safe.includes('"') || safe.includes('\n'))
+      return `"${safe.replace(/"/g, '""')}"`;
+    return safe;
   };
   const lines = [headers.join(',')];
   for (const c of customers) {

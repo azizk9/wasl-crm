@@ -20,7 +20,7 @@ export async function removeRow(table: DataTable, owner: string, id: string): Pr
   const { error } = await getClient().from(table).delete().eq('id', id).eq('owner_id', owner);
   if (error) throw error;
 }
-export async function batchInsertRows<T>(table: DataTable, owner: string, rows: Record<string, unknown>[]): Promise<{ inserted: number; skipped: number }> {
+export async function batchInsertRows(table: DataTable, owner: string, rows: Record<string, unknown>[]): Promise<{ inserted: number; skipped: number }> {
   if (!rows.length) return { inserted: 0, skipped: 0 };
   const payload = rows.map(r => ({ ...r, owner_id: owner }));
   const { data, error } = await getClient().from(table).insert(payload).select('id');
