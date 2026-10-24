@@ -28,6 +28,39 @@
 .fu-card{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #eaeef5;border-radius:12px;padding:15px 17px;transition:.15s;background:#fff}
 .fu-card:hover{border-color:#d0deef;box-shadow:0 3px 12px #1d335607}
 .fu-card-overdue{border-color:#f0d0d6;background:#fef9f9}
+.page-action-group{display:flex;gap:8px;flex-wrap:wrap}
+.import-upload-zone{border:2px dashed #cbd9ec;border-radius:14px;padding:36px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;background:#fafcff}
+.import-file-input{display:none}
+.import-drop-label{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;color:#6b7a90;transition:.15s;padding:10px 20px;border-radius:10px}
+.import-drop-label:hover{background:#f0f5ff;color:#2462d3}
+.import-drop-label h3{font-size:14px;color:#34445b}
+.import-drop-label .muted{font-size:11px}
+.import-file-info{display:flex;align-items:center;gap:8px;font-size:12px;color:#475569;background:#f0faf4;border:1px solid #d4f0dd;border-radius:9px;padding:10px 14px}
+.mapping-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.mapping-row{display:grid;grid-template-columns:130px 1fr 1fr;gap:10px;align-items:center;padding:8px 12px;background:#f8fafd;border-radius:8px;border:1px solid #f1f4f8}
+.mapping-label{font-size:12px;font-weight:700;color:#51647f}
+.mapping-select{min-height:38px}
+.mapping-preview{font-size:11px;color:#8294aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-summary{display:flex;gap:12px;margin-bottom:16px}
+.preview-stat{flex:1;border-radius:10px;padding:14px;text-align:center;border:1px solid}
+.preview-stat strong{display:block;font:bold 24px system-ui}
+.preview-stat span{font-size:10px;color:#8294aa;font-weight:700}
+.preview-stat-ok{background:#f0faf4;border-color:#d4f0dd}.preview-stat-ok strong{color:#1c8654}
+.preview-stat-warn{background:#fff8e7;border-color:#ffe7a5}.preview-stat-warn strong{color:#d48b23}
+.preview-stat-err{background:#fff1f1;border-color:#ffcfd4}.preview-stat-err strong{color:#d6576a}
+.preview-options{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.checkbox-label{display:flex;align-items:center;gap:8px;font-size:12px;color:#51647f;cursor:pointer}
+.checkbox-label input{width:16px;height:16px;accent-color:#2968e7;cursor:pointer}
+.preview-table-wrap{max-height:320px;overflow:auto;border:1px solid #eef1f6;border-radius:9px;margin-bottom:16px}
+.preview-table{min-width:600px}
+.preview-table th{position:sticky;top:0;z-index:1}
+.preview-row-ok{background:#fff}
+.preview-row-dup{background:#fff8e7}
+.preview-row-err{background:#fff1f1}
+.import-done{display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 20px}
+.import-done h3{font-size:18px;margin-bottom:8px;color:#1c8654}
+.import-done .muted{font-size:13px;line-height:1.8}
+@media(max-width:720px){.page-action-group{flex-direction:column;width:100%}.page-action-group .btn{width:100%}.mapping-row{grid-template-columns:1fr;gap:6px}.preview-summary{flex-direction:column}.preview-table{min-width:500px}}
 .fu-card-main{display:flex;align-items:center;gap:13px;flex:1;min-width:0;cursor:pointer}
 .fu-card-info{min-width:0}
 .fu-card-title{display:flex;align-items:center;gap:8px}
