@@ -4,3 +4,5 @@ export const DEAL_STAGES = { 'New Lead': 'فرصة جديدة', Contacted: 'تم
 export const TASK_PRIORITIES = { Low: 'منخفضة', Medium: 'متوسطة', High: 'عالية' } as const;
 export const TASK_STATUSES = { Pending: 'قيد التنفيذ', Completed: 'مكتملة' } as const;
 export const APPOINTMENT_STATUSES = { Scheduled: 'مجدول', Completed: 'مكتمل', Cancelled: 'ملغى' } as const;
+export const ACTIVITY_TYPES = { Note: 'ملاحظة', Call: 'مكالمة', Message: 'رسالة', Meeting: 'اجتماع', WhatsApp: 'واتساب' } as const;
+export const FOLLOW_UP_ACTIONS = { call: 'مكالمة هاتفية', whatsapp: 'رسالة واتساب', meeting: 'اجتماع', email: 'بريد إلكتروني', proposal: 'إرسال عرض سعر', other: 'أخرى' } as const;

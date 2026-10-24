@@ -19,6 +19,12 @@ export const safeWhatsApp = (phone: string): string | null => {
   const cleaned = phone.replace(/\D/g, '');
   return cleaned.length >= 7 && cleaned.length <= 15 ? `https://wa.me/${cleaned}` : null;
 };
+export const whatsappWithMessage = (phone: string, message: string): string | null => {
+  const base = safeWhatsApp(phone);
+  if (!base) return null;
+  const text = message.trim();
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+};
 export const isOverdue = (iso: string | null, status = 'Pending') => !!iso && status !== 'Completed' && new Date(iso).getTime() < Date.now();
 export const inToday = (iso: string | null) => !!iso && new Date(iso).toDateString() === new Date().toDateString();
 export const isUpcoming = (iso: string) => new Date(iso).getTime() >= Date.now();
