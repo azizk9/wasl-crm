@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { CalendarDays, ChartNoAxesCombined, ChevronDown, CircleHelp, ClipboardList, LayoutDashboard, LogOut, Menu, Plus, Settings, ShieldCheck, Target, Users, X, CalendarClock } from 'lucide-react';
+import { CalendarDays, ChartNoAxesCombined, ChevronDown, CircleHelp, ClipboardList, LayoutDashboard, LogOut, Menu, Plus, Settings, ShieldCheck, Target, Users, X, CalendarClock, UserCog } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import { getClient } from '../lib/supabase';
 
@@ -13,6 +13,7 @@ const nav = [
   { to:'/appointments', label:'المواعيد', icon:CalendarDays },
   { to:'/reports', label:'التقارير', icon:ChartNoAxesCombined },
 ];
+const teamNav = { to:'/team', label:'الفريق', icon:UserCog };
 function Logo(){ return <Link className="logo" to="/dashboard"><span className="logo-mark">و</span><span><strong>وصل <small>WASL</small></strong><em>Customer relationship manager</em></span></Link>; }
 function UserMenu(){
   const {user,role,fullName}=useAuth();const navigate=useNavigate();const [open,setOpen]=useState(false);
@@ -39,15 +40,16 @@ function UserMenu(){
   </div>;
 }
 export function AppLayout({children}:{children:ReactNode}) {
-  const [drawer,setDrawer]=useState(false);const location=useLocation();
-  const active = nav.find(n=>location.pathname.startsWith(n.to));
+  const [drawer,setDrawer]=useState(false);const location=useLocation();const {role}=useAuth();
+  const visibleNav = role === 'admin' ? [...nav, teamNav] : nav;
+  const active = visibleNav.find(n=>location.pathname.startsWith(n.to));
   return <div className="app-shell">
     {drawer&&<button type="button" className="mobile-scrim" onClick={()=>setDrawer(false)} aria-label="إغلاق القائمة"/>}
     <aside className={`sidebar ${drawer?'sidebar-open':''}`}>
       <div className="sidebar-top"><Logo/><button className="mobile-close icon-button" onClick={()=>setDrawer(false)} aria-label="إغلاق"><X size={19}/></button></div>
       <div className="workspace-pill"><span className="workspace-avatar">W</span><span className="workspace-text"><strong>مساحة عملي</strong><small>الخطة الأساسية</small></span><ChevronDown size={16}/></div>
       <div className="nav-caption">مساحة العمل</div>
-      <nav className="side-nav" aria-label="التنقل الرئيسي">{nav.map(({to,label,icon:Icon})=><NavLink onClick={()=>setDrawer(false)} key={to} to={to} className={({isActive})=>`side-link ${isActive?'active':''}`}><Icon size={19}/><span>{label}</span></NavLink>)}</nav>
+      <nav className="side-nav" aria-label="التنقل الرئيسي">{visibleNav.map(({to,label,icon:Icon})=><NavLink onClick={()=>setDrawer(false)} key={to} to={to} className={({isActive})=>`side-link ${isActive?'active':''}`}><Icon size={19}/><span>{label}</span></NavLink>)}</nav>
       <div className="sidebar-bottom"><div className="nav-caption">الحساب</div><NavLink onClick={()=>setDrawer(false)} className={({isActive})=>`side-link ${isActive?'active':''}`} to="/settings"><Settings size={19}/>الإعدادات</NavLink></div>
       <p className="sidebar-version">WASL CRM • v1.0</p>
     </aside>

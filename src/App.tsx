@@ -12,6 +12,7 @@ import { AppointmentsPage } from './pages/AppointmentsPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { FollowUpsPage } from './pages/FollowUpsPage';
+import { TeamPage } from './pages/TeamPage';
 
 function RoutedApp(){
   const {user,loading}=useAuth();
@@ -28,6 +29,7 @@ function RoutedApp(){
       <Route path="/appointments" element={<AppointmentsPage/>}/>
       <Route path="/reports" element={<ReportsPage/>}/>
       <Route path="/settings" element={<SettingsPage/>}/>
+      <Route path="/team" element={<TeamPage/>}/>
       <Route path="*" element={<Navigate to="/dashboard" replace/>}/>
     </Routes></AppLayout>:<Navigate to="/login" replace/>}/>
   </Routes>;

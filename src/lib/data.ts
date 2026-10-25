@@ -1,14 +1,16 @@
 import { getClient } from './supabase';
 import type { DataTable } from '../types/models';
 
-export async function readRows<T>(table: DataTable, owner: string): Promise<T[]> {
-  const { data, error } = await getClient().from(table).select('*').eq('owner_id', owner).order('created_at', { ascending: false }).limit(1000);
+export async function readRows<T>(table: DataTable, owner: string, includeAll = false): Promise<T[]> {
+  let query = getClient().from(table).select('*').order('created_at', { ascending: false }).limit(1000);
+  if (!includeAll) query = query.eq('owner_id', owner);
+  const { data, error } = await query;
   if (error) throw error;
   return (data ?? []) as T[];
 }
 export async function saveRow<T>(table: DataTable, owner: string, payload: Record<string, unknown>, id?: string): Promise<T> {
   // Explicitly overwrite any passed owner_id instead of trusting form input.
-  const safe = { ...payload, owner_id: owner };
+  const safe = id ? payload : table === 'customers' ? payload : { ...payload, owner_id: owner };
   const query = id
     ? getClient().from(table).update(safe).eq('id', id).eq('owner_id', owner)
     : getClient().from(table).insert(safe);
@@ -22,7 +24,7 @@ export async function removeRow(table: DataTable, owner: string, id: string): Pr
 }
 export async function batchInsertRows(table: DataTable, owner: string, rows: Record<string, unknown>[]): Promise<{ inserted: number; skipped: number }> {
   if (!rows.length) return { inserted: 0, skipped: 0 };
-  const payload = rows.map(r => ({ ...r, owner_id: owner }));
+  const payload = table === 'customers' ? rows : rows.map(r => ({ ...r, owner_id: owner }));
   const { data, error } = await getClient().from(table).insert(payload).select('id');
   if (error) {
     if (error.code === '23505') throw new Error('بعض السجلات مكررة في قاعدة البيانات.');
