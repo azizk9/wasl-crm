@@ -22,7 +22,7 @@ function UserMenu(){
   const display=fullName||(user?.email??'U');
   const initial=display.charAt(0).toUpperCase();
   return <div className="user-menu" ref={ref}>
-    <button type="button" className="user-trigger" onClick={()=>setOpen(o=>!o)} aria-haspopup="menu" aria-expanded={open}>
+    <button type="button" className="user-trigger topbar-user" onClick={()=>setOpen(o=>!o)} aria-haspopup="menu" aria-expanded={open}>
       <span className="header-user">{initial}</span>
       <span className="user-trigger-info"><b>{display}</b><small>{role==='admin'?'مشرف':'مبيعات'}</small></span>
       <ChevronDown size={15} className={`user-chevron ${open?'open':''}`}/>
@@ -51,6 +51,6 @@ export function AppLayout({children}:{children:ReactNode}) {
       <div className="sidebar-bottom"><div className="nav-caption">الحساب</div><NavLink onClick={()=>setDrawer(false)} className={({isActive})=>`side-link ${isActive?'active':''}`} to="/settings"><Settings size={19}/>الإعدادات</NavLink></div>
       <p className="sidebar-version">WASL CRM • v1.0</p>
     </aside>
-    <div className="app-main"><header className="topbar"><div className="topbar-start"><button className="icon-button menu-trigger" onClick={()=>setDrawer(true)} aria-label="فتح القائمة"><Menu size={21}/></button><PanelRightClose className="topbar-icon" size={19}/><span className="topbar-divider"/><span className="topbar-page">{active?.label ?? 'الإعدادات'}</span></div><div className="topbar-end"><Link to="/customers?new=1" className="btn btn-primary btn-small"><Plus size={16}/> إضافة عميل</Link><UserMenu/></div></header><main className="content">{children}</main><footer className="app-footer"><span>© Wasl CRM 2026</span><span>أنجز أعمالك بوضوح أكثر</span></footer></div>
+    <div className="app-main"><header className="topbar"><div className="topbar-start"><span className="topbar-page">{active?.label ?? 'الإعدادات'}</span></div><div className="topbar-end"><UserMenu/><span className="topbar-divider"/><Link to="/customers?new=1" className="btn btn-primary btn-small topbar-add"><span>إضافة عميل</span><Plus size={18}/></Link><button className="icon-button topbar-menu-icon" onClick={()=>setDrawer(true)} aria-label="فتح القائمة"><Menu size={22}/></button><button className="icon-button topbar-panel-icon" aria-label="إخفاء القائمة"><PanelRightClose size={20}/></button></div></header><main className="content">{children}</main><footer className="app-footer"><span>© Wasl CRM 2026</span><span>أنجز أعمالك بوضوح أكثر</span></footer></div>
   </div>;
 }
