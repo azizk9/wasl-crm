@@ -26,5 +26,6 @@ export interface Appointment extends BaseModel {
 export interface Activity extends BaseModel {
   customer_id: string; type: ActivityType; content: string;
 }
-export interface Profile { id: string; full_name: string; created_at: string; updated_at: string; }
+export type UserRole = 'admin' | 'sales';
+export interface Profile { id: string; full_name: string; role: UserRole; created_at: string; updated_at: string; }
 export type DataTable = 'customers' | 'deals' | 'tasks' | 'appointments' | 'activities';
