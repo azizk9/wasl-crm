@@ -15,6 +15,22 @@ const nav = [
 ];
 const teamNav = { to:'/team', label:'الفريق', icon:UserCog };
 function Logo(){ return <Link className="logo" to="/dashboard"><span className="logo-mark">و</span><span><strong>وصل <small>WASL</small></strong><em>Customer relationship manager</em></span></Link>; }
+function WorkspaceSwitcher(){
+  const {role}=useAuth();const [open,setOpen]=useState(false);const ref=useRef<HTMLDivElement>(null);
+  useEffect(()=>{const h=(event:MouseEvent)=>{if(ref.current&&!ref.current.contains(event.target as Node))setOpen(false);};document.addEventListener('mousedown',h);return()=>document.removeEventListener('mousedown',h);},[]);
+  return <div className="workspace-switcher" ref={ref}>
+    <button type="button" className="workspace-pill" onClick={()=>setOpen(value=>!value)} aria-haspopup="menu" aria-expanded={open}>
+      <span className="workspace-avatar">W</span><span className="workspace-text"><strong>مساحة عملي</strong><small>الخطة الأساسية</small></span><ChevronDown size={16} className={`workspace-chevron ${open?'open':''}`}/>
+    </button>
+    {open&&<div className="workspace-menu" role="menu">
+      <div className="workspace-menu-current"><span className="workspace-avatar">W</span><div><strong>مساحة عملي</strong><small>مساحتك الحالية</small></div></div>
+      <div className="user-dropdown-divider"/>
+      <Link to="/dashboard" className="workspace-menu-item" onClick={()=>setOpen(false)} role="menuitem">لوحة التحكم</Link>
+      {role==='admin'&&<Link to="/team" className="workspace-menu-item" onClick={()=>setOpen(false)} role="menuitem">إدارة الفريق</Link>}
+      <Link to="/settings" className="workspace-menu-item" onClick={()=>setOpen(false)} role="menuitem">إعدادات الحساب</Link>
+    </div>}
+  </div>;
+}
 function UserMenu(){
   const {user,role,fullName}=useAuth();const navigate=useNavigate();const [open,setOpen]=useState(false);
   const ref=useRef<HTMLDivElement>(null);
@@ -47,7 +63,7 @@ export function AppLayout({children}:{children:ReactNode}) {
     {drawer&&<button type="button" className="mobile-scrim" onClick={()=>setDrawer(false)} aria-label="إغلاق القائمة"/>}
     <aside className={`sidebar ${drawer?'sidebar-open':''}`}>
       <div className="sidebar-top"><Logo/><button className="mobile-close icon-button" onClick={()=>setDrawer(false)} aria-label="إغلاق"><X size={19}/></button></div>
-      <div className="workspace-pill"><span className="workspace-avatar">W</span><span className="workspace-text"><strong>مساحة عملي</strong><small>الخطة الأساسية</small></span><ChevronDown size={16}/></div>
+      <WorkspaceSwitcher/>
       <div className="nav-caption">مساحة العمل</div>
       <nav className="side-nav" aria-label="التنقل الرئيسي">{visibleNav.map(({to,label,icon:Icon})=><NavLink onClick={()=>setDrawer(false)} key={to} to={to} className={({isActive})=>`side-link ${isActive?'active':''}`}><Icon size={19}/><span>{label}</span></NavLink>)}</nav>
       <div className="sidebar-bottom"><div className="nav-caption">الحساب</div><NavLink onClick={()=>setDrawer(false)} className={({isActive})=>`side-link ${isActive?'active':''}`} to="/settings"><Settings size={19}/>الإعدادات</NavLink></div>
